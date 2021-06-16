@@ -215,6 +215,7 @@ static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
+static void transferall(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
 static void unmanage(Client *c, int destroyed);
 static void unmapnotify(XEvent *e);
@@ -1771,6 +1772,31 @@ toggleview(const Arg *arg)
 		focus(NULL);
 		arrange(selmon);
 	}
+}
+
+void
+transferall(const Arg *arg) {
+	Client *c, *n = selmon->clients, *attachfrom = NULL;
+	int i = 0, nstackclients = 0;
+	while (n) {
+		c = n;
+		n = c->next;
+		if (!ISVISIBLE(c) || c->isfloating) continue;
+		if (i >= selmon->nmaster) {
+			detach(c);
+			if (!attachfrom) {
+				attach(c);
+			} else {
+				c->next = attachfrom->next;
+				attachfrom->next = c;
+			}
+			attachfrom = c;
+			nstackclients++;
+		}
+		i++;
+	}
+	selmon->nmaster = nstackclients;
+	arrange(selmon);
 }
 
 void

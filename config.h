@@ -75,14 +75,15 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_f,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_s,      focusstack,     {.i = -1 } },
 //	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 //	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-//	{ MODKEY,                       XK_        zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_w,      transferall,    {0} },
+	{ MODKEY,                       XK_w,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -98,13 +99,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_a,      focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_g,      tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_a,      tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ MODKEY|ControlMask,           XK_minus,  setgaps,        {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_equal,  setgaps,        {.i = +1 } },
+	{ MODKEY|ControlMask|ShiftMask, XK_equal,  setgaps,        {.i = 0  } },
 	{ MODKEY,                       XK_e,      shiftview,      { .i = +1 } },
 	{ MODKEY,                       XK_d,      shiftview,      { .i = -1 } },
 	TAGKEYS(                        XK_1,                      0)
-//	TAGKEYS(                        XK_2,                      1)                   */
+	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
