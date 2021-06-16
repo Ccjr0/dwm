@@ -50,8 +50,8 @@ static const Layout layouts[] = {
 	{ "-tile-",      tile },    /* first entry is default */
 	{ "-flot-",      NULL },    /* no layout function means floating behavior */
 	{ "-mono-",      monocle },
-//	{ "[@]",         spiral },     
-//	{ "[\\]",         dwindle },   
+//	{ "-fibo-",      spiral },     
+//	{ "-dwnd-",      dwindle },   
 };
 
 /* key definitions */
@@ -75,6 +75,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_r,      spawn,          SHCMD("urxvt -e nnn")},
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_f,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_s,      focusstack,     {.i = -1 } },
